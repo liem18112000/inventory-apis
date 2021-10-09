@@ -1245,7 +1245,7 @@
       },
       "parameters": [],
       "post": {
-        "summary": "Save",
+        "summary": "Ingredient - Save",
         "operationId": "post-ingredient-id",
         "responses": {
           "200": {
@@ -1391,7 +1391,7 @@
         }
       },
       "put": {
-        "summary": "Update",
+        "summary": "Ingredient - Update",
         "operationId": "put-ingredient-id",
         "responses": {
           "200": {
@@ -1847,6 +1847,576 @@
             "name": "Content-Type"
           }
         ]
+      }
+    },
+    "/ingredient/inventory/sync": {
+      "post": {
+        "summary": "Inventory - Sync",
+        "operationId": "post-ingredient-inventory-sync",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "x-examples": {
+                    "example-1": [
+                      {
+                        "id": 14,
+                        "clientId": 1,
+                        "ingredient": {
+                          "id": 2,
+                          "clientId": 1,
+                          "name": "New Zealand Cow Milk",
+                          "code": "NZCM",
+                          "description": "New Zealand Cow Milk",
+                          "children": [],
+                          "unit": "bottle",
+                          "unitType": "whole",
+                          "createAt": "2021-10-03 22:27:07",
+                          "updateAt": "2021-10-05T15:25:04.225930500Z"
+                        },
+                        "name": "New Zealand Cow Milk NZCM",
+                        "description": "New Zealand Cow Milk",
+                        "quantity": 4,
+                        "unit": "bottle",
+                        "unitType": "whole",
+                        "updateAt": "2021-10-07T07:42:18.872235800Z"
+                      },
+                      {
+                        "id": 15,
+                        "clientId": 1,
+                        "ingredient": {
+                          "id": 3,
+                          "clientId": 1,
+                          "name": "Queen land Goat milk",
+                          "code": "QLGM",
+                          "description": "Queen land Goat milk",
+                          "children": [],
+                          "unit": "bottle",
+                          "unitType": "whole",
+                          "createAt": "2021-10-03 22:27:07",
+                          "updateAt": "2021-10-05T15:22:04.989878200Z"
+                        },
+                        "name": "Queen land Goat milk QLGM",
+                        "description": "Queen land Goat milk",
+                        "quantity": 3,
+                        "unit": "bottle",
+                        "unitType": "whole",
+                        "updateAt": "2021-10-07T07:42:18.925603900Z"
+                      },
+                      {
+                        "id": 16,
+                        "clientId": 1,
+                        "ingredient": {
+                          "id": 23,
+                          "clientId": 1,
+                          "name": "Coca cola",
+                          "code": "00331133",
+                          "description": "Coca cola",
+                          "children": [],
+                          "unit": "can",
+                          "unitType": "whole",
+                          "createAt": "2021-10-07T02:18:36.061655500Z",
+                          "updateAt": "2021-10-07T02:18:36.061655500Z"
+                        },
+                        "name": "Coca cola 00331133",
+                        "description": "Coca cola",
+                        "quantity": 3,
+                        "unit": "can",
+                        "unitType": "whole",
+                        "updateAt": "2021-10-07T07:42:18.946546500Z"
+                      },
+                      {
+                        "id": 17,
+                        "clientId": 1,
+                        "ingredient": {
+                          "id": 24,
+                          "clientId": 1,
+                          "name": "Pepsi",
+                          "code": "99331133",
+                          "description": "Pepsi",
+                          "children": [],
+                          "unit": "can",
+                          "unitType": "whole",
+                          "createAt": "2021-10-07T07:00:36.379957900Z",
+                          "updateAt": "2021-10-07T07:00:36.380955400Z"
+                        },
+                        "name": "Pepsi 99331133",
+                        "description": "Pepsi ",
+                        "quantity": 2,
+                        "unit": "can",
+                        "unitType": "whole",
+                        "updateAt": "2021-10-07T07:42:18.959512100Z"
+                      }
+                    ]
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "clientId": {
+                        "type": "number"
+                      },
+                      "ingredient": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "clientId",
+                          "name",
+                          "code",
+                          "description",
+                          "children",
+                          "unit",
+                          "unitType",
+                          "createAt",
+                          "updateAt"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "clientId": {
+                            "type": "number"
+                          },
+                          "name": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "code": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "description": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "children": {
+                            "type": "array",
+                            "items": {
+                              "type": "object"
+                            }
+                          },
+                          "unit": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "unitType": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "createAt": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "updateAt": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        }
+                      },
+                      "name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "description": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "quantity": {
+                        "type": "number"
+                      },
+                      "unit": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "unitType": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "updateAt": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "clientId",
+                      "name",
+                      "description",
+                      "quantity",
+                      "unit",
+                      "unitType",
+                      "updateAt"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Sync item in inventory",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "default": "1",
+              "example": "1"
+            },
+            "in": "header",
+            "name": "tenantId",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "default": "application/json",
+              "example": "application/json"
+            },
+            "in": "header",
+            "name": "Content-Type",
+            "required": true
+          }
+        ]
+      }
+    },
+    "/ingredient/inventory/page": {
+      "post": {
+        "summary": "Inventory - Get page",
+        "operationId": "post-ingredient-inventory-page",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "content": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "minItems": 1,
+                      "items": {
+                        "required": [
+                          "id",
+                          "clientId",
+                          "name",
+                          "description",
+                          "quantity",
+                          "unit",
+                          "unitType"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "clientId": {
+                            "type": "number"
+                          },
+                          "ingredient": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "clientId": {
+                                "type": "number"
+                              },
+                              "name": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "code": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "description": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "children": {},
+                              "createAt": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "updateAt": {
+                                "type": "string",
+                                "minLength": 1
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "clientId",
+                              "name",
+                              "code",
+                              "description",
+                              "createAt",
+                              "updateAt"
+                            ]
+                          },
+                          "name": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "description": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "quantity": {
+                            "type": "number"
+                          },
+                          "unit": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "unitType": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        }
+                      }
+                    },
+                    "pageable": {
+                      "type": "object",
+                      "properties": {
+                        "sort": {
+                          "type": "object",
+                          "properties": {
+                            "empty": {
+                              "type": "boolean"
+                            },
+                            "sorted": {
+                              "type": "boolean"
+                            },
+                            "unsorted": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "empty",
+                            "sorted",
+                            "unsorted"
+                          ]
+                        },
+                        "offset": {
+                          "type": "number"
+                        },
+                        "pageNumber": {
+                          "type": "number"
+                        },
+                        "pageSize": {
+                          "type": "number"
+                        },
+                        "unpaged": {
+                          "type": "boolean"
+                        },
+                        "paged": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "sort",
+                        "offset",
+                        "pageNumber",
+                        "pageSize",
+                        "unpaged",
+                        "paged"
+                      ]
+                    },
+                    "last": {
+                      "type": "boolean"
+                    },
+                    "totalPages": {
+                      "type": "number"
+                    },
+                    "totalElements": {
+                      "type": "number"
+                    },
+                    "number": {
+                      "type": "number"
+                    },
+                    "size": {
+                      "type": "number"
+                    },
+                    "sort": {
+                      "type": "object",
+                      "properties": {
+                        "empty": {
+                          "type": "boolean"
+                        },
+                        "sorted": {
+                          "type": "boolean"
+                        },
+                        "unsorted": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "empty",
+                        "sorted",
+                        "unsorted"
+                      ]
+                    },
+                    "first": {
+                      "type": "boolean"
+                    },
+                    "numberOfElements": {
+                      "type": "number"
+                    },
+                    "empty": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "content",
+                    "pageable",
+                    "last",
+                    "totalPages",
+                    "totalElements",
+                    "number",
+                    "size",
+                    "sort",
+                    "first",
+                    "numberOfElements",
+                    "empty"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "content": [
+                        {
+                          "id": 1,
+                          "clientId": 1,
+                          "ingredient": {
+                            "id": 2,
+                            "clientId": 1,
+                            "name": "New Zealand Cow Milk",
+                            "code": "NZCM",
+                            "description": "New Zealand Cow Milk",
+                            "children": null,
+                            "createAt": "2021-10-03 22:27:07",
+                            "updateAt": "2021-10-05T15:25:04.225930500Z"
+                          },
+                          "name": "New Zealand Cow Milk",
+                          "description": "New Zealand Cow Milk",
+                          "quantity": 4,
+                          "unit": "bottle",
+                          "unitType": "whole"
+                        },
+                        {
+                          "id": 2,
+                          "clientId": 1,
+                          "ingredient": {
+                            "id": 3,
+                            "clientId": 1,
+                            "name": "Queen land Goat milk",
+                            "code": "QLGM",
+                            "description": "Queen land Goat milk",
+                            "children": null,
+                            "createAt": "2021-10-03 22:27:07",
+                            "updateAt": "2021-10-05T15:22:04.989878200Z"
+                          },
+                          "name": "Queen Land Goat Milk",
+                          "description": "Queen Land Goat Milk",
+                          "quantity": 3,
+                          "unit": "bottle",
+                          "unitType": "whole"
+                        }
+                      ],
+                      "pageable": {
+                        "sort": {
+                          "empty": false,
+                          "sorted": true,
+                          "unsorted": false
+                        },
+                        "offset": 0,
+                        "pageNumber": 0,
+                        "pageSize": 10,
+                        "unpaged": false,
+                        "paged": true
+                      },
+                      "last": true,
+                      "totalPages": 1,
+                      "totalElements": 2,
+                      "number": 0,
+                      "size": 10,
+                      "sort": {
+                        "empty": false,
+                        "sorted": true,
+                        "unsorted": false
+                      },
+                      "first": true,
+                      "numberOfElements": 2,
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Get all inventorys with pagination",
+        "parameters": [
+          {
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "example": 1
+            },
+            "in": "header",
+            "name": "tenantId",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "default": "application/json",
+              "example": "application/json"
+            },
+            "in": "header",
+            "required": true,
+            "name": "Content-Type"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "page": 0,
+                    "size": 10,
+                    "sort": "id, asc"
+                  }
+                },
+                "properties": {
+                  "page": {
+                    "type": "number",
+                    "default": 0,
+                    "example": 0
+                  },
+                  "size": {
+                    "type": "number",
+                    "default": 10,
+                    "example": 1
+                  },
+                  "sort": {
+                    "type": "string",
+                    "default": "id, desc"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
