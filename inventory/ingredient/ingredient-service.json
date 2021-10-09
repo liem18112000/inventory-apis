@@ -1,0 +1,1369 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Ingredient Service",
+    "version": "1.0",
+    "description": "API Mockup for Ingredient Service",
+    "contact": {
+      "name": "Backend Developer",
+      "email": "1859027@itec.hcmus.edu.vn"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "localhost mockup"
+    }
+  ],
+  "paths": {
+    "/ingredient/type/page": {
+      "post": {
+        "summary": "Get all ingredient type with pagination",
+        "operationId": "post-ingredient-type-page",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "content": [
+                        {
+                          "id": 3,
+                          "clientId": 1,
+                          "name": "Queen land Goat milk",
+                          "code": "QLGM",
+                          "description": "Queen land Goat milk",
+                          "unit": "bottle",
+                          "unitType": "whole",
+                          "createAt": "2021-10-03 22:27:07",
+                          "updateAt": "2021-10-05T15:22:04.989878200Z"
+                        },
+                        {
+                          "id": 2,
+                          "clientId": 1,
+                          "name": "New Zealand Cow Milk",
+                          "code": "NZCM",
+                          "description": "New Zealand Cow Milk",
+                          "unit": "bottle",
+                          "unitType": "whole",
+                          "createAt": "2021-10-03 22:27:07",
+                          "updateAt": "2021-10-05T15:25:04.225930500Z"
+                        }
+                      ],
+                      "pageable": {
+                        "sort": {
+                          "empty": false,
+                          "sorted": true,
+                          "unsorted": false
+                        },
+                        "offset": 0,
+                        "pageSize": 10,
+                        "pageNumber": 0,
+                        "paged": true,
+                        "unpaged": false
+                      },
+                      "last": true,
+                      "totalElements": 2,
+                      "totalPages": 1,
+                      "number": 0,
+                      "size": 10,
+                      "sort": {
+                        "empty": false,
+                        "sorted": true,
+                        "unsorted": false
+                      },
+                      "first": true,
+                      "numberOfElements": 2,
+                      "empty": false
+                    }
+                  },
+                  "properties": {
+                    "content": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "minItems": 1,
+                      "description": "Page contents",
+                      "items": {
+                        "$ref": "#/components/schemas/IngredientTypeEntity"
+                      }
+                    },
+                    "pageable": {
+                      "type": "object",
+                      "description": "Pageable options",
+                      "required": [
+                        "sort",
+                        "offset",
+                        "pageSize",
+                        "pageNumber",
+                        "paged",
+                        "unpaged"
+                      ],
+                      "properties": {
+                        "sort": {
+                          "type": "object",
+                          "required": [
+                            "empty",
+                            "sorted",
+                            "unsorted"
+                          ],
+                          "properties": {
+                            "empty": {
+                              "type": "boolean",
+                              "description": "Is empty flag"
+                            },
+                            "sorted": {
+                              "type": "boolean",
+                              "description": "Is sorting flag"
+                            },
+                            "unsorted": {
+                              "type": "boolean",
+                              "description": "Unsort flag"
+                            }
+                          }
+                        },
+                        "offset": {
+                          "type": "number",
+                          "description": "Page offset"
+                        },
+                        "pageSize": {
+                          "type": "number",
+                          "description": "Page size"
+                        },
+                        "pageNumber": {
+                          "type": "number",
+                          "description": "Page number"
+                        },
+                        "paged": {
+                          "type": "boolean",
+                          "description": "Paged flag"
+                        },
+                        "unpaged": {
+                          "type": "boolean",
+                          "description": "Unpage flag"
+                        }
+                      }
+                    },
+                    "last": {
+                      "type": "boolean",
+                      "description": "Last item flag"
+                    },
+                    "totalElements": {
+                      "type": "number",
+                      "description": "Total quantity of item"
+                    },
+                    "totalPages": {
+                      "type": "number",
+                      "description": "Total number of page"
+                    },
+                    "number": {
+                      "type": "number",
+                      "description": "Page number"
+                    },
+                    "size": {
+                      "type": "number",
+                      "description": "Page size"
+                    },
+                    "sort": {
+                      "type": "object",
+                      "description": "Sort object",
+                      "required": [
+                        "empty",
+                        "sorted",
+                        "unsorted"
+                      ],
+                      "properties": {
+                        "empty": {
+                          "type": "boolean",
+                          "description": "Empty flag"
+                        },
+                        "sorted": {
+                          "type": "boolean",
+                          "description": "Sorted flag"
+                        },
+                        "unsorted": {
+                          "type": "boolean",
+                          "description": "Unsorted flag"
+                        }
+                      }
+                    },
+                    "first": {
+                      "type": "boolean",
+                      "description": "First item flag"
+                    },
+                    "numberOfElements": {
+                      "type": "number",
+                      "description": "Number of elements"
+                    },
+                    "empty": {
+                      "type": "boolean",
+                      "description": "Empty flag"
+                    }
+                  },
+                  "required": [
+                    "content",
+                    "pageable",
+                    "last",
+                    "totalElements",
+                    "totalPages",
+                    "number",
+                    "size",
+                    "sort",
+                    "first",
+                    "numberOfElements",
+                    "empty"
+                  ]
+                },
+                "examples": {}
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "exception": "FailValidateException",
+                      "validatorMessage": {
+                        "tenantId": [
+                          "'-1' is not a positive number"
+                        ]
+                      },
+                      "exceptionMessage": "FailValidateException: ",
+                      "stackFrame": [
+                        "com.fromlabs.inventory.inventoryservice.common.exception.FailValidateException",
+                        "\tat com.fromlabs.inventory.inventoryservice.common.template.WebTemplateProcess.onValidateFail(WebTemplateProcess.java:135)",
+                        "\tat com.fromlabs.inventory.inventoryservice.common.template.WebTemplateProcess.templateMethod(WebTemplateProcess.java:189)",
+                        "\tat com.fromlabs.inventory.inventoryservice.common.template.WebTemplateProcess.templateMethod(WebTemplateProcess.java:91)",
+                        "\tat com.fromlabs.inventory.inventoryservice.common.template.TemplateProcess.run(TemplateProcess.java:81)",
+                        "\tat com.fromlabs.inventory.inventoryservice.IngredientController.getPageIngredientType(IngredientController.java:144)",
+                        "\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)",
+                        "\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)",
+                        "\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)",
+                        "\tat java.base/java.lang.reflect.Method.invoke(Method.java:567)",
+                        "\tat org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)",
+                        "\tat org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)",
+                        "\tat org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)",
+                        "\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)",
+                        "\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)",
+                        "\tat org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)",
+                        "\tat org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)",
+                        "\tat org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)",
+                        "\tat org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)",
+                        "\tat org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)",
+                        "\tat javax.servlet.http.HttpServlet.service(HttpServlet.java:681)",
+                        "\tat org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)",
+                        "\tat javax.servlet.http.HttpServlet.service(HttpServlet.java:764)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)",
+                        "\tat org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)",
+                        "\tat org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)",
+                        "\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)",
+                        "\tat org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)",
+                        "\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)",
+                        "\tat org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)",
+                        "\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)",
+                        "\tat org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)",
+                        "\tat org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)",
+                        "\tat org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)",
+                        "\tat org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)",
+                        "\tat org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)",
+                        "\tat org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)",
+                        "\tat org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)",
+                        "\tat org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)",
+                        "\tat org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)",
+                        "\tat org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)",
+                        "\tat org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726)",
+                        "\tat org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)",
+                        "\tat org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)",
+                        "\tat org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)",
+                        "\tat org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)",
+                        "\tat java.base/java.lang.Thread.run(Thread.java:835)"
+                      ],
+                      "timestamp": "2021-10-09T12:36:09.557561200Z"
+                    }
+                  },
+                  "properties": {
+                    "exception": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "validatorMessage": {
+                      "type": "object",
+                      "required": [
+                        "tenantId"
+                      ],
+                      "properties": {
+                        "tenantId": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          }
+                        }
+                      }
+                    },
+                    "exceptionMessage": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "stackFrame": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "exception",
+                    "exceptionMessage",
+                    "stackFrame",
+                    "timestamp"
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "timestamp": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "status": {
+                      "type": "number"
+                    },
+                    "error": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "path": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "timestamp",
+                    "status",
+                    "error",
+                    "path"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "timestamp": "2021-10-09T12:36:53.957+00:00",
+                      "status": 415,
+                      "error": "Unsupported Media Type",
+                      "path": "/ingredient/type/page"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "timestamp": "2021-10-09T12:36:53.957+00:00",
+                      "status": 415,
+                      "error": "Unsupported Media Type",
+                      "path": "/ingredient/type/page"
+                    }
+                  },
+                  "properties": {
+                    "timestamp": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "status": {
+                      "type": "number",
+                      "default": 500
+                    },
+                    "error": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "path": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "timestamp",
+                    "status",
+                    "error",
+                    "path"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Get all ingredients with pagination",
+        "parameters": [
+          {
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "example": 1,
+              "minimum": 1
+            },
+            "in": "header",
+            "name": "tenantId",
+            "description": "Client ID",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "parentId": 0,
+                    "page": 0,
+                    "size": 0,
+                    "sort": "string"
+                  }
+                },
+                "properties": {
+                  "parentId": {
+                    "type": "number"
+                  },
+                  "page": {
+                    "type": "number",
+                    "default": 0,
+                    "minimum": 0,
+                    "example": 0
+                  },
+                  "size": {
+                    "type": "number",
+                    "default": 1,
+                    "minimum": 1,
+                    "example": 1
+                  },
+                  "sort": {
+                    "type": "string",
+                    "default": "id, desc"
+                  }
+                },
+                "required": [
+                  "parentId"
+                ]
+              },
+              "examples": {}
+            }
+          },
+          "description": "Custome page request"
+        }
+      }
+    },
+    "/ingredient/category/page": {
+      "post": {
+        "summary": "Get all ingredient category with pagination",
+        "operationId": "post-ingredient-category-page",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "content": [
+                        {
+                          "id": 12,
+                          "clientId": 1,
+                          "name": "Soft drink",
+                          "code": "22331133",
+                          "description": "Soft drink",
+                          "children": [
+                            {
+                              "id": 23,
+                              "clientId": 1,
+                              "name": "Coca cola",
+                              "code": "00331133",
+                              "description": "Coca cola",
+                              "children": null,
+                              "unit": "can",
+                              "unitType": "whole",
+                              "createAt": "2021-10-07T02:18:36.061655500Z",
+                              "updateAt": "2021-10-07T02:18:36.061655500Z"
+                            },
+                            {
+                              "id": 24,
+                              "clientId": 1,
+                              "name": "Pepsi",
+                              "code": "99331133",
+                              "description": "Pepsi",
+                              "children": null,
+                              "unit": "can",
+                              "unitType": "whole",
+                              "createAt": "2021-10-07T07:00:36.379957900Z",
+                              "updateAt": "2021-10-07T07:00:36.380955400Z"
+                            },
+                            {
+                              "id": 28,
+                              "clientId": 1,
+                              "name": "Mirinda",
+                              "code": "88331188",
+                              "description": null,
+                              "children": null,
+                              "unit": "bottle",
+                              "unitType": "whole",
+                              "createAt": "2021-10-07T14:16:52.357651500Z",
+                              "updateAt": "2021-10-07T14:16:52.357651500Z"
+                            }
+                          ],
+                          "unit": null,
+                          "unitType": null,
+                          "createAt": "2021-10-05T12:55:31.576390300Z",
+                          "updateAt": "2021-10-05T12:55:31.576390300Z"
+                        },
+                        {
+                          "id": 4,
+                          "clientId": 1,
+                          "name": "Cake",
+                          "code": "00112211",
+                          "description": "Cake",
+                          "children": [],
+                          "unit": null,
+                          "unitType": null,
+                          "createAt": "2021-10-03 22:27:07",
+                          "updateAt": "2021-10-07T07:01:09.287226200Z"
+                        },
+                        {
+                          "id": 1,
+                          "clientId": 1,
+                          "name": "Milk",
+                          "code": "00112233",
+                          "description": "Milk",
+                          "children": [
+                            {
+                              "id": 2,
+                              "clientId": 1,
+                              "name": "New Zealand Cow Milk",
+                              "code": "NZCM",
+                              "description": "New Zealand Cow Milk",
+                              "children": null,
+                              "unit": "bottle",
+                              "unitType": "whole",
+                              "createAt": "2021-10-03 22:27:07",
+                              "updateAt": "2021-10-05T15:25:04.225930500Z"
+                            },
+                            {
+                              "id": 3,
+                              "clientId": 1,
+                              "name": "Queen land Goat milk",
+                              "code": "QLGM",
+                              "description": "Queen land Goat milk",
+                              "children": null,
+                              "unit": "bottle",
+                              "unitType": "whole",
+                              "createAt": "2021-10-03 22:27:07",
+                              "updateAt": "2021-10-05T15:22:04.989878200Z"
+                            }
+                          ],
+                          "unit": null,
+                          "unitType": null,
+                          "createAt": "2021-10-03 22:27:07",
+                          "updateAt": "2021-10-03 22:27:07"
+                        }
+                      ],
+                      "pageable": {
+                        "sort": {
+                          "empty": false,
+                          "sorted": true,
+                          "unsorted": false
+                        },
+                        "offset": 0,
+                        "pageNumber": 0,
+                        "pageSize": 10,
+                        "paged": true,
+                        "unpaged": false
+                      },
+                      "last": true,
+                      "totalPages": 1,
+                      "totalElements": 3,
+                      "number": 0,
+                      "size": 10,
+                      "sort": {
+                        "empty": false,
+                        "sorted": true,
+                        "unsorted": false
+                      },
+                      "first": true,
+                      "numberOfElements": 3,
+                      "empty": false
+                    }
+                  },
+                  "properties": {
+                    "content": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "minItems": 1,
+                      "items": {
+                        "$ref": "#/components/schemas/IngredientCategoryEntity"
+                      }
+                    },
+                    "pageable": {
+                      "type": "object",
+                      "required": [
+                        "sort",
+                        "offset",
+                        "pageNumber",
+                        "pageSize",
+                        "paged",
+                        "unpaged"
+                      ],
+                      "properties": {
+                        "sort": {
+                          "type": "object",
+                          "required": [
+                            "empty",
+                            "sorted",
+                            "unsorted"
+                          ],
+                          "properties": {
+                            "empty": {
+                              "type": "boolean"
+                            },
+                            "sorted": {
+                              "type": "boolean"
+                            },
+                            "unsorted": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "offset": {
+                          "type": "number"
+                        },
+                        "pageNumber": {
+                          "type": "number"
+                        },
+                        "pageSize": {
+                          "type": "number"
+                        },
+                        "paged": {
+                          "type": "boolean"
+                        },
+                        "unpaged": {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "last": {
+                      "type": "boolean"
+                    },
+                    "totalPages": {
+                      "type": "number"
+                    },
+                    "totalElements": {
+                      "type": "number"
+                    },
+                    "number": {
+                      "type": "number"
+                    },
+                    "size": {
+                      "type": "number"
+                    },
+                    "sort": {
+                      "type": "object",
+                      "required": [
+                        "empty",
+                        "sorted",
+                        "unsorted"
+                      ],
+                      "properties": {
+                        "empty": {
+                          "type": "boolean"
+                        },
+                        "sorted": {
+                          "type": "boolean"
+                        },
+                        "unsorted": {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "first": {
+                      "type": "boolean"
+                    },
+                    "numberOfElements": {
+                      "type": "number"
+                    },
+                    "empty": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "content",
+                    "pageable",
+                    "last",
+                    "totalPages",
+                    "totalElements",
+                    "number",
+                    "size",
+                    "sort",
+                    "first",
+                    "numberOfElements",
+                    "empty"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "exception": "FailValidateException",
+                      "validatorMessage": {
+                        "tenantId": [
+                          "'-1' is not a positive number"
+                        ]
+                      },
+                      "exceptionMessage": "FailValidateException: ",
+                      "stackFrame": [
+                        "com.fromlabs.inventory.inventoryservice.common.exception.FailValidateException",
+                        "\tat com.fromlabs.inventory.inventoryservice.common.template.WebTemplateProcess.onValidateFail(WebTemplateProcess.java:135)",
+                        "\tat com.fromlabs.inventory.inventoryservice.common.template.WebTemplateProcess.templateMethod(WebTemplateProcess.java:189)",
+                        "\tat com.fromlabs.inventory.inventoryservice.common.template.WebTemplateProcess.templateMethod(WebTemplateProcess.java:91)",
+                        "\tat com.fromlabs.inventory.inventoryservice.common.template.TemplateProcess.run(TemplateProcess.java:81)",
+                        "\tat com.fromlabs.inventory.inventoryservice.IngredientController.getPageIngredientCategory(IngredientController.java:102)",
+                        "\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)",
+                        "\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)",
+                        "\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)",
+                        "\tat java.base/java.lang.reflect.Method.invoke(Method.java:567)",
+                        "\tat org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)",
+                        "\tat org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)",
+                        "\tat org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)",
+                        "\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)",
+                        "\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)",
+                        "\tat org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)",
+                        "\tat org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)",
+                        "\tat org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)",
+                        "\tat org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)",
+                        "\tat org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)",
+                        "\tat javax.servlet.http.HttpServlet.service(HttpServlet.java:681)",
+                        "\tat org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)",
+                        "\tat javax.servlet.http.HttpServlet.service(HttpServlet.java:764)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)",
+                        "\tat org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)",
+                        "\tat org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)",
+                        "\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)",
+                        "\tat org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)",
+                        "\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)",
+                        "\tat org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)",
+                        "\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)",
+                        "\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)",
+                        "\tat org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)",
+                        "\tat org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)",
+                        "\tat org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)",
+                        "\tat org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)",
+                        "\tat org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)",
+                        "\tat org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)",
+                        "\tat org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)",
+                        "\tat org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)",
+                        "\tat org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)",
+                        "\tat org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)",
+                        "\tat org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726)",
+                        "\tat org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)",
+                        "\tat org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)",
+                        "\tat org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)",
+                        "\tat org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)",
+                        "\tat java.base/java.lang.Thread.run(Thread.java:835)"
+                      ],
+                      "timestamp": "2021-10-09T12:28:30.234492700Z"
+                    }
+                  },
+                  "properties": {
+                    "exception": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "validatorMessage": {
+                      "type": "object",
+                      "required": [
+                        "tenantId"
+                      ],
+                      "properties": {
+                        "tenantId": {
+                          "type": "array",
+                          "items": {
+                            "type": "object"
+                          }
+                        }
+                      }
+                    },
+                    "exceptionMessage": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "stackFrame": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "exception",
+                    "exceptionMessage",
+                    "stackFrame",
+                    "timestamp"
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "timestamp": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "status": {
+                      "type": "number"
+                    },
+                    "error": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "path": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "timestamp",
+                    "status",
+                    "error",
+                    "path"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "timestamp": "2021-10-09T12:29:08.528+00:00",
+                      "status": 415,
+                      "error": "Unsupported Media Type",
+                      "path": "/ingredient/category/page"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "timestamp": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "status": {
+                      "type": "number"
+                    },
+                    "error": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "path": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "timestamp",
+                    "status",
+                    "error",
+                    "path"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "timestamp": "2021-10-09T12:29:08.528+00:00",
+                      "status": 415,
+                      "error": "Unsupported Media Type",
+                      "path": "/ingredient/category/page"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Get all ingredient category with pagination",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "page": 0,
+                    "size": 10,
+                    "sort": "id, desc"
+                  }
+                },
+                "properties": {
+                  "page": {
+                    "type": "number",
+                    "default": 0,
+                    "minimum": 0,
+                    "example": 0
+                  },
+                  "size": {
+                    "type": "number",
+                    "default": 1,
+                    "minimum": 1,
+                    "example": 1
+                  },
+                  "sort": {
+                    "type": "string",
+                    "minLength": 1,
+                    "default": "id, desc"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "default": "1",
+              "example": "1",
+              "minLength": 1
+            },
+            "in": "header",
+            "name": "tenantId",
+            "description": "Client ID",
+            "required": true
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "IngredientTypeEntity": {
+        "description": "Ingedient type",
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "id": 3,
+            "clientId": 1,
+            "name": "Queen land Goat milk",
+            "code": "QLGM",
+            "description": "Queen land Goat milk",
+            "unit": "bottle",
+            "unitType": "whole",
+            "createAt": "2021-10-03 22:27:07",
+            "updateAt": "2021-10-05T15:22:04.989878200Z"
+          }
+        },
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "clientId": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "code": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "unit": {
+            "type": "string",
+            "minLength": 1
+          },
+          "unitType": {
+            "type": "string",
+            "minLength": 1
+          },
+          "createAt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "updateAt": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "clientId",
+          "name",
+          "code",
+          "unit",
+          "unitType"
+        ]
+      },
+      "IngredientCategoryEntity": {
+        "description": "Ingredient category",
+        "type": "object",
+        "x-examples": {
+          "example-1": {
+            "id": 1,
+            "clientId": 1,
+            "name": "Milk",
+            "code": "00112233",
+            "description": "Milk",
+            "children": [
+              {
+                "id": 2,
+                "clientId": 1,
+                "name": "New Zealand Cow Milk",
+                "code": "NZCM",
+                "description": "New Zealand Cow Milk",
+                "unit": "bottle",
+                "unitType": "whole",
+                "createAt": "2021-10-03 22:27:07",
+                "updateAt": "2021-10-05T15:25:04.225930500Z"
+              },
+              {
+                "id": 3,
+                "clientId": 1,
+                "name": "Queen land Goat milk",
+                "code": "QLGM",
+                "description": "Queen land Goat milk",
+                "unit": "bottle",
+                "unitType": "whole",
+                "createAt": "2021-10-03 22:27:07",
+                "updateAt": "2021-10-05T15:22:04.989878200Z"
+              }
+            ],
+            "createAt": "2021-10-03 22:27:07",
+            "updateAt": "2021-10-03 22:27:07"
+          }
+        },
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "clientId": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "code": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "children": {
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/IngredientTypeEntity"
+            }
+          },
+          "createAt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "updateAt": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "clientId",
+          "name",
+          "code",
+          "children",
+          "createAt",
+          "updateAt"
+        ]
+      },
+      "IngredientConfigEntity": {
+        "title": "IngredientConfigEnityt",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "IngredientPageRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "description": "",
+              "type": "object",
+              "x-examples": {
+                "example-1": {
+                  "parentId": 1,
+                  "page": 0,
+                  "size": 10,
+                  "sort": "id, desc"
+                }
+              },
+              "properties": {
+                "parentId": {
+                  "type": "number"
+                },
+                "page": {
+                  "type": "number"
+                },
+                "size": {
+                  "type": "number"
+                },
+                "sort": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "parentId"
+              ]
+            },
+            "examples": {}
+          }
+        }
+      },
+      "IngredientRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "description": "",
+              "type": "object",
+              "x-examples": {
+                "example-1": {
+                  "id": 1,
+                  "name": "Mirinda",
+                  "code": "88331188",
+                  "parentId": 12,
+                  "maximumQuantity": 10000,
+                  "minimumQuantity": 2,
+                  "unit": "bottle",
+                  "unitType": "whole"
+                }
+              },
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "code": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "parentId": {
+                  "type": "number"
+                },
+                "maximumQuantity": {
+                  "type": "number"
+                },
+                "minimumQuantity": {
+                  "type": "number"
+                },
+                "unit": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "unitType": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "code",
+                "parentId",
+                "unit",
+                "unitType"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "SaveIngredientResponse": {
+        "description": "The combo response of saving ingredient",
+        "content": {
+          "application/json": {
+            "schema": {
+              "description": "",
+              "type": "object",
+              "x-examples": {
+                "example-1": {
+                  "ingredient": {
+                    "id": 0,
+                    "clientId": 0,
+                    "name": "string",
+                    "code": "string",
+                    "description": "string",
+                    "children": {
+                      "id": 0,
+                      "clientId": 0,
+                      "name": "string",
+                      "code": "string",
+                      "description": "string",
+                      "unit": "string",
+                      "unitType": "string",
+                      "createAt": "string",
+                      "updateAt": "string",
+                      "parent": {}
+                    },
+                    "unit": "string",
+                    "unitType": "string",
+                    "createAt": "string",
+                    "updateAt": "string"
+                  },
+                  "config": {
+                    "id": 0,
+                    "clientId": 0,
+                    "ingredient": {
+                      "id": 0,
+                      "clientId": 0,
+                      "name": "string",
+                      "code": "string",
+                      "description": "string",
+                      "children": [
+                        {}
+                      ],
+                      "unit": "string",
+                      "unitType": "string",
+                      "createAt": "string",
+                      "updateAt": "string"
+                    },
+                    "minimumQuantity": 0,
+                    "maximumQuantity": 0,
+                    "updateAt": "string"
+                  }
+                }
+              },
+              "properties": {
+                "ingredient": {
+                  "$ref": "#/components/schemas/IngredientTypeEntity"
+                },
+                "config": {
+                  "$ref": "#/components/schemas/IngredientConfigEntity"
+                }
+              },
+              "required": [
+                "ingredient",
+                "config"
+              ]
+            }
+          }
+        },
+        "headers": {}
+      }
+    },
+    "parameters": {
+      "tenantId": {
+        "name": "tenantId",
+        "in": "header",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "default": 1,
+          "example": 1,
+          "minimum": 1
+        },
+        "description": "The client ID - multit-tenancing"
+      },
+      "userId": {
+        "name": "userId",
+        "in": "header",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "default": 1,
+          "example": 1,
+          "minimum": 1
+        },
+        "description": "User ID "
+      }
+    }
+  }
+}
