@@ -3003,8 +3003,8 @@
   "components": {
     "schemas": {
       "IngredientTypeEntity": {
-        "description": "Ingedient type",
         "type": "object",
+        "description": "Ingedient type",
         "x-examples": {
           "example-1": {
             "id": 3,
@@ -3018,6 +3018,7 @@
             "updateAt": "2021-10-05T15:22:04.989878200Z"
           }
         },
+        "minProperties": 1,
         "properties": {
           "id": {
             "type": "number"
@@ -3064,7 +3065,8 @@
           "code",
           "unit",
           "unitType"
-        ]
+        ],
+        "title": ""
       },
       "IngredientConfigEntity": {
         "description": "",
