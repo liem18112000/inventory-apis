@@ -3023,7 +3023,10 @@
             "type": "number"
           },
           "clientId": {
-            "type": "number"
+            "type": "number",
+            "default": 1,
+            "example": 1,
+            "minimum": 1
           },
           "name": {
             "type": "string",
@@ -3092,60 +3095,13 @@
             "type": "number"
           },
           "clientId": {
-            "type": "number"
+            "type": "number",
+            "default": 1,
+            "minimum": 1,
+            "example": 1
           },
           "ingredient": {
-            "type": "object",
-            "required": [
-              "id",
-              "clientId",
-              "name",
-              "code",
-              "children",
-              "unit",
-              "unitType",
-              "createAt",
-              "updateAt"
-            ],
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "clientId": {
-                "type": "number"
-              },
-              "name": {
-                "type": "string",
-                "minLength": 1
-              },
-              "code": {
-                "type": "string",
-                "minLength": 1
-              },
-              "description": {},
-              "children": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              },
-              "unit": {
-                "type": "string",
-                "minLength": 1
-              },
-              "unitType": {
-                "type": "string",
-                "minLength": 1
-              },
-              "createAt": {
-                "type": "string",
-                "minLength": 1
-              },
-              "updateAt": {
-                "type": "string",
-                "minLength": 1
-              }
-            }
+            "$ref": "#/components/schemas/IngredientTypeEntity"
           },
           "minimumQuantity": {
             "type": "number"
